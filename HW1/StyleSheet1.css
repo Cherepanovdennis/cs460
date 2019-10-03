@@ -18,7 +18,7 @@ body {
     url("https://www.historyonthenet.com/wp-content/uploads/2016/11/Bundesarchiv_Bild_183-S55480,_Polen,_Parade_vor_Adolf_Hitler.jpg");
     background-size: 290px, 290px;
     height: 100%, 100%;
-    border: 1.5px solid;
+
     background-repeat: repeat-y, repeat-y;
     background-position: top left, top right;
 }
