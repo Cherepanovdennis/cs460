@@ -13,11 +13,12 @@ BODY {
 
 
 
-body {
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/33/RIAN_archive_61150_Great_Patriotic_War.jpg"), url("https://www.historyonthenet.com/wp-content/uploads/2016/11/Bundesarchiv_Bild_183-S55480,_Polen,_Parade_vor_Adolf_Hitler.jpg");
-    background-size: 488px, 488px;
+body { 
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/33/RIAN_archive_61150_Great_Patriotic_War.jpg"), 
+    url("https://www.historyonthenet.com/wp-content/uploads/2016/11/Bundesarchiv_Bild_183-S55480,_Polen,_Parade_vor_Adolf_Hitler.jpg");
+    background-size: 290px, 290px;
     height: 100%, 100%;
-    border: 1px solid;
+    border: 1.5px solid;
     background-repeat: repeat-y, repeat-y;
     background-position: top left, top right;
 }
