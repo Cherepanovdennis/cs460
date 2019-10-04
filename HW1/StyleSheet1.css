@@ -50,3 +50,9 @@ li {
             background-color: #45aa31;
         }
 
+dd {
+    display: list-item;
+    list-style-type: disc;
+    margin-left: 50px;
+}
+
