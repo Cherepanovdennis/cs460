@@ -3,9 +3,33 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Temp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
+    <h1>Test</h1>
+    <div class="regularForm">
+        <fieldset>
+            <legend>Select a date to generate a calendar</legend>
+            <label for="dateSelect">
+                <span>Car Cost: </span>
+                <input type="text" id="datacost" name="dataCost"/>
+                <span> Sales Tax: </span>
+                <input type="text" id="datasale" name="dataSale" maxlength="3" />
+                <span>Minimum Monthly Payment</span>
+                <input type="text" id="datapayment" name="datapay" maxlength="4" />
+                <br />
+                <br />
+                <button onclick="testfunction()">Try it</button>
+            </label>
+        </fieldset>
+    </div>
+
+    <p id="demo"> hi</p>
+
+
+    <script src="hw2.js"></script>
 
 </body>
 </html>
