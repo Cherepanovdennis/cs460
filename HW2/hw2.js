@@ -2,7 +2,8 @@
 
 
 function testfunction() {
-    var x = document.getElementById("datacost").value;
+    var cash = document.getElementById("datacost").value;
+    var interest = document.getElementById("datasale").value;
     document.getElementById("demo").innerHTML = x
 }
 function myfunction() {
