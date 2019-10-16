@@ -69,6 +69,14 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+HW3/main
+HW3/main/*
+HW3/main/Hw3/App.config
+HW3/main/Hw3/Hw3.csproj
+HW3/main/Hw3/Properties/
+HW3/main/main.sln
+
+
 
 # Chutzpah Test files
 _Chutzpah*
