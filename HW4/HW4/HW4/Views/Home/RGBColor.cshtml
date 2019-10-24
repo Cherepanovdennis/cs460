@@ -1,12 +1,13 @@
 ﻿
 @{
-    ViewData["Title"] = "Request color";
+    ViewData["Title"] = "RGBolor";
 }
 
-<h1>Give Values</h1>
+<h1>RGB Shader</h1>
+<p>Place values between 0-255 to return a shade of color</p>
 <div class="row">
     <div class=" col-md-4">
-        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        @using (Html.BeginForm("RGBColor", "Home", FormMethod.Get))
         {
 
         <div class="form-group">
@@ -14,29 +15,29 @@
             @Html.TextBox("red", null, new { @class = "form-control", type = "number", min = "0", max = "255", id = "redid", name = "Red" })
             @Html.Label("green", "Green: ")
             @Html.TextBox("green", null, new { @class = "form-control", type = "number", min = "0", max = "255", id = "greenid", name = "Green" })
-            @Html.Label("blue", "blue: ")
+            @Html.Label("blue", "Blue: ")
             @Html.TextBox("blue", null, new { @class = "form-control", type = "number", min = "0", max = "255", id = "blueid", name = "Blue" })
             <br />
             <button type="submit" class="btn btn-primary">Submit </button>
             <br />
+            <br />
+
 
             @if (ViewBag.Success == true)
             {
-                <br/>
+                <br />
                 <div class="row">
                     <div class="col-md-4">
                         <table>
                             <tr>
-   
-                                <td   height="100" style=" width: 100px; background-color: rgb(@ViewBag.RedRGB, @ViewBag.GreenRGB, @ViewBag.BlueRGB);" > </td>
+
+                                <td height="100" style=" width: 100px; background-color: rgb(@ViewBag.RedRGB, @ViewBag.GreenRGB, @ViewBag.BlueRGB);"> </td>
                             </tr>
                         </table>
 
                         <p><b>@ViewBag.Hex</b></p>
                     </div>
                 </div>
-
-                
             }
 
 
