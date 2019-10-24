@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Request color";
+}
+
+<h1>Give Values</h1>
+<div class="row">
+    <div class=" col-md-4">
+        @using (Html.BeginForm("Inde", "RGB", FormMethod.Get))
+        {
+
+            <div class="form-group">
+                @Html.Label("red", "Red: ")
+                @Html.TextBox("red", null, new { @class = "form-control", type = "number", min = "0", max = "255", id = "redid", name = "Red" })
+                @Html.Label("blue", "Blue: ")
+                @Html.TextBox("blue", null, new { @class = "form-control", type = "number", min = "0", max = "255", id = "blueid", name = "Blue" })
+                @Html.Label("green", "Green: ")
+                @Html.TextBox("green", null, new { @class = "form-control", type = "number", min = "0", max = "255", id = "greenid", name = "Green" })
+                <br />
+                <button type="submit" class="btn btn-primary">Submit </button>
+
+
+                @if (ViewBag.Success == true)
+                {
+                    <div class="container-fluid" style="float:right">
+                        <div style="width:300px; height:100px;">
+                            <p>@ViewBag.Red</p>
+                        </div>
+                    </div>
+                }
+
+
+
+
+            </div>
+        }
+    </div>
+
+</div>
+
