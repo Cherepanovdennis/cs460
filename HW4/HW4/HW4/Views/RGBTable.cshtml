@@ -4,19 +4,30 @@
 }
 
 <h1>RGBTable</h1>
+<p>Please Enter color in HTML hex format: #AABBCC</p>
 
 <div class="row">
     <div class=" col-md-4">
-        @using (Html.BeginForm("RGBColor", "Home", FormMethod.Post))
+        @using (Html.BeginForm("RGBTable", "Home", FormMethod.Post))
         {
 
             <div class="form-group">
-                @Html.Label("red", "Red: ")
-                @Html.TextBox("red", null, new { @class = "form-control", type = "number", min = "0", max = "255", id = "redid", name = "Red" })
-                @Html.Label("green", "Green: ")
-                @Html.TextBox("green", null, new { @class = "form-control", type = "number", min = "0", max = "255", id = "greenid", name = "Green" })
-                @Html.Label("blue", "Blue: ")
-                @Html.TextBox("blue", null, new { @class = "form-control", type = "number", min = "0", max = "255", id = "blueid", name = "Blue" })
+                <table style="float: right;">
+                    <tr>
+                        <th><b>HTML</b></th>
+                        <th><b>Color</b></th>
+                    </tr>
+                    <tr>
+                        
+                    </tr>
+
+                </table>
+                @Html.Label("hexvalue1", "First Color: ")
+                @Html.TextBox("First Color", null, new { @class = "form-control", type = "number", maxlength = "7", min = "0" })
+                @Html.Label("hexvalue2", "Second Color: ")
+                @Html.TextBox("hexvalue2", null, new { @class = "form-control", type = "text", maxlength = "7", min = "0" })
+                @Html.Label("numberofcolors", "Steps: ")
+                @Html.TextBox("numberofcolors", null, new { @class = "form-control", type = "number", min = "0" })
                 <br />
                 <button type="submit" class="btn btn-primary">Submit </button>
                 <br />

@@ -14,7 +14,7 @@ namespace HW4.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(string Hexred, string Hexgreen, string Hexblue)
+        public IActionResult Index(string firstcolor, string secondcolor, int? steps)
         {
             return View();
         }
