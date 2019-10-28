@@ -3,7 +3,23 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">CS 460 Homework 4</h1>
+    <p>A couple forms and simple server-side logic -- learning the basics of GET, POST, query strings, form data and handling it all from an ASP.NET MVC 5 application</p>
 </div>
-<p> @Html.ActionLink("Hex table", "Index", "RGBTable")</p>
+
+<div class="container">
+    <div class="col-md-10" >
+        
+        <div class="col-md-6">
+            <p><b>RGB Color</b></p>
+            <p>Uses query strings to send form data to the server which reads in the request object and then preforms a calculation to make an color table </p>
+            <p>@Html.ActionLink("RGBColor", "RGBColor", "Home")</p>
+        </div>
+
+        <div class="col-md-6">
+            <p><b>Hex Table</b></p>
+            <p>This form POSTS the data to the server and uses parameter binding to make it easy</p>
+            <p> @Html.ActionLink("Hex table", "Index", "RGBTable")</p>
+        </div>
+    </div>
+</div>

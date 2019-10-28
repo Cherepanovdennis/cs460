@@ -17,9 +17,18 @@ namespace HW4.Controllers
         [HttpPost]
         public IActionResult Index(string hexfirstcolor, string hexsecondcolor, int? steps)
         {
-            if (steps == null || !ModelState.IsValid || hexfirstcolor[0] != '#' || hexfirstcolor[0] != '#') //if int is null or invalid
+            string test = hexfirstcolor;
+            string test2 = hexsecondcolor;
+           test =  test.Remove(0, 1);
+            test2 = test2.Remove(0, 1);
+            bool testifhex1 = System.Text.RegularExpressions.Regex.IsMatch(test, @"\A\b[0-9a-fA-F]+\b\Z");
+            bool testifhex2 = System.Text.RegularExpressions.Regex.IsMatch(test2, @"\A\b[0-9a-fA-F]+\b\Z");
+
+
+            if (steps == null || !ModelState.IsValid || hexfirstcolor[0] != '#' || hexfirstcolor[0] != '#' || testifhex1 == false || testifhex2 ==false ) //if int is null or invalid
             {
-                return RedirectToAction("Index", "Home");
+                ViewBag.HexValue = false;
+                return View(); 
             }
             else
             {
@@ -52,6 +61,7 @@ namespace HW4.Controllers
                 double valueincrement = (value - value2) / Convert.ToDouble(steps);
                 double saturationincrement = (saturation - saturation2) / Convert.ToDouble(steps);
                 Hex.Add(hexfirstcolor);
+                
                 if(hueincrement < 0)
                 {
                     hueincrement *= -1;
