@@ -1,1 +1,1 @@
-﻿Select * From [dbo].[HomeWorkNotes]
+﻿Select * From [dbo].[HWnotes]

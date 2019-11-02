@@ -24,8 +24,8 @@ namespace NewHW5.Models
         [DisplayName("Homwork Title"), Required, StringLength(20)]
         public string HomeworkTitle { get; set; }
 
-        [DisplayName("Piority"), Required]
-        public string Prioity { get; set; }
+        [DisplayName("Priority"), Required]
+        public string Priority { get; set; }
 
         [DisplayName("Department"), Required, StringLength(3)]
         public string Department { get; set; }
@@ -33,12 +33,16 @@ namespace NewHW5.Models
         [DisplayName("Course#"), Required]
         public int CourseNumber { get; set; }
 
+        [DisplayName("Notes"), StringLength(254)]
+
+        public string Notes { get; set; }
+
 
 
 
         public override string ToString()
         {
-            return $"{base.ToString()}: {DueDate} {DueTime} Homework Title = {HomeworkTitle} Piority = {Prioity} Department = {Department} CourseNumber= {CourseNumber}";
+            return $"{base.ToString()}: {DueDate} {DueTime} Homework Title = {HomeworkTitle} Piority = {Priority} Department = {Department} CourseNumber= {CourseNumber} Notes = {Notes}";
         }
     }
 }

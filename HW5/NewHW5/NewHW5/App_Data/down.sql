@@ -1,1 +1,1 @@
-﻿DROP TABLE [dbo].[HomeWorkNotes]
+﻿DROP TABLE [dbo].[HWnotes]

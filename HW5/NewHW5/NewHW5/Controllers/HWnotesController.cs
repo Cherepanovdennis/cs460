@@ -47,7 +47,7 @@ namespace NewHW5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,DueDate,DueTime,HomeworkTitle,Prioity,Department,CourseNumber")] HWnotes hWnotes)
+        public ActionResult Create([Bind(Include = "ID,DueDate,DueTime,HomeworkTitle,Priority,Department,CourseNumber,Notes")] HWnotes hWnotes)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace NewHW5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,DueDate,DueTime,HomeworkTitle,Prioity,Department,CourseNumber")] HWnotes hWnotes)
+        public ActionResult Edit([Bind(Include = "ID,DueDate,DueTime,HomeworkTitle,Priority,Department,CourseNumber,Notes")] HWnotes hWnotes)
         {
             if (ModelState.IsValid)
             {
@@ -123,6 +123,12 @@ namespace NewHW5.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public enum Priority
+        {
+            Low,
+            Medium, 
+            High
         }
     }
 }
