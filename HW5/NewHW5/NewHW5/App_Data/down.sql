@@ -1,1 +1,1 @@
-﻿DROP TABLE [dbo].[Users]
+﻿DROP TABLE [dbo].[HomeWorkNotes]

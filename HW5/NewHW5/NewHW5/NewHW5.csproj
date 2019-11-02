@@ -128,12 +128,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="DAL\User.cs" />
+    <Compile Include="Controllers\HWnotesController.cs" />
+    <Compile Include="DAL\HomeworkNotes.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\HWnotes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +183,11 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\HWnotes\Create.cshtml" />
+    <Content Include="Views\HWnotes\Delete.cshtml" />
+    <Content Include="Views\HWnotes\Details.cshtml" />
+    <Content Include="Views\HWnotes\Edit.cshtml" />
+    <Content Include="Views\HWnotes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

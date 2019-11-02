@@ -9,14 +9,14 @@ using System.Data.Entity;
 
 namespace NewHW5.DAL
 {
-    public class UserContext : DbContext
+    public class NotesContext : DbContext
     {
-        public UserContext() : base("name=OurUserDB")
+        public NotesContext() : base("name=OurUserDB")
         {
 
         }
 
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<HWnotes> Notes { get; set; }
 
     }
 }
