@@ -6,16 +6,17 @@ using System.Web;
 using NewHW5.Models;
 using System.Data.Entity;
 
+
 namespace NewHW5.DAL
 {
     public class UserContext : DbContext
     {
-        public UserContext() : base("name=OurUserDB)")
+        public UserContext() : base("name=OurUserDB")
         {
 
         }
 
-        public virtual DBset<User> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
     }
 }

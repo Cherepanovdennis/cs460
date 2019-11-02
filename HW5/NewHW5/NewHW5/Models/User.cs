@@ -11,6 +11,7 @@ namespace NewHW5.Models
     {
         [Key]
         public int ID { get; set; }
+        
         [Required, DisplayName("First Name")]
         [StringLength(64)]
         public string FirstName { get; set; }
