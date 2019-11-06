@@ -18,7 +18,9 @@ namespace NewHW5.Controllers
         // GET: HWnotes
         public ActionResult Index()
         {
-            return View(db.Notes.ToList());
+
+
+            return View(db.Notes.OrderByDescending(a=> a.DueTime).ToList());
         }
 
         // GET: HWnotes/Details/5
