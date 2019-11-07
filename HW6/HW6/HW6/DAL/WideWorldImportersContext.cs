@@ -7,9 +7,9 @@ namespace HW6.DAL
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class WideWorldImportContext : DbContext
+    public partial class WideWorldImportersContext : DbContext
     {
-        public WideWorldImportContext()
+        public WideWorldImportersContext()
             : base("name=WideWorlImportersContext")
         {
         }

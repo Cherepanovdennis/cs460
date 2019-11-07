@@ -143,7 +143,7 @@
     <Compile Include="Models\DeliveryMethod.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\InvoiceLine.cs" />
-    <Compile Include="DAL\WideWorldImportContext.cs" />
+    <Compile Include="DAL\WideWorldImportersContext.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderLine.cs" />
     <Compile Include="Models\PackageType.cs" />
