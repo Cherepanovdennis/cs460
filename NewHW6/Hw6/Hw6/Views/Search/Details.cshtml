@@ -1,0 +1,41 @@
+﻿@model Hw6.Models.ViewModel.StockItemModelView
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<head>
+
+
+</head>
+
+<h2>Details Page</h2>
+
+<div class="container-fluid">
+    <table class="table">
+        <tr>
+            <th>StockItemName</th>
+            <th>ItemSize</th>
+            <th>ReccomendedPrice</th>
+            <th>ProductWeight</th>
+            <th>LeadTimeDays</th>
+            <th>ValidSince</th>
+            <th>CountryOrigin</th>
+            <th>Tags</th>
+            <th>Photo</th>
+        </tr>
+
+        <tr>
+            <th>@Model.StockItemName</th>
+            <th>@Model.ItemSize</th>
+            <th>@Model.ReccomendedPrice</th>
+            <th>@Model.ProductWeight</th>
+            <th>@Model.LeadTimeDays</th>
+            <th>@Model.ValidSince</th>
+            <th>@Model.CountryOrigin</th>
+            <th>@Model.Tags</th>
+            <th>@Model.Photo</th>
+        </tr>
+
+    </table>
+</div>
