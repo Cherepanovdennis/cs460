@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HW6.DAL;
+using HW6.Models;
+using HW6.Models.ViewModel;
 
 namespace HW6.Controllers
 {

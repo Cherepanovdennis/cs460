@@ -1,0 +1,63 @@
+﻿@model HW6.Models.ViewModel.NameTable
+@{
+    ViewBag.Title = "Index";
+}
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+
+    </head>
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Search", FormMethod.Get))
+{
+    <div class="col-md-4">
+        @Html.Label("=", "Find an Item ")
+        @Html.TextBox("=", null, new { @class = "form-control", type = "text", maxlength = "50", min = "0", onkeyup = "this.value = this.value.toUpperCase();" })
+
+        <br />
+        <button type="submit" class="btn btn-primary">Submit </button>
+    </div>
+    <br />
+    <br />
+    if (Model != null)
+    {
+        if (Model.Names.Count() > 0 && ViewBag.input == true)
+        {
+        <div class="container-fluid">
+            <table class="table">
+
+                @foreach (var item in Model.Names)
+                {
+                    <tr><th>@Html.ActionLink(item,"Details", "Search", new {id = item }, null)</th></tr>
+
+
+                }
+            </table>
+            </div>
+
+        }
+
+        else if (Model.Names.Count() == 0 && ViewBag.input == true)
+        {
+            <p> Nothing was found, please try searching for something else </p >
+            }
+
+        }
+    }
+
