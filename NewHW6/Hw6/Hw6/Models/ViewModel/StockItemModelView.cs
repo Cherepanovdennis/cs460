@@ -4,17 +4,21 @@ using System.Linq;
 using System.Web;
 using Hw6.Models;
 using Newtonsoft.Json;
+using Hw6.Dal;
+using Hw6.Models.ViewModel;
+using System.Data.Entity.Infrastructure;
 
 namespace Hw6.Models.ViewModel
 {
     public class StockItemModelView
     {
-
+        private readonly WideWorldImportersContext db = new WideWorldImportersContext();
         public StockItemModelView(StockItem stockItem)
         {
 
+            
 
-            StockItemName = stockItem.StockItemName;
+        StockItemName = stockItem.StockItemName;
             ItemSize = stockItem.Size;
             ReccomendedPrice = stockItem.RecommendedRetailPrice;
             ProductWeight = stockItem.TypicalWeightPerUnit;
@@ -34,6 +38,39 @@ namespace Hw6.Models.ViewModel
             Fax = supply.FaxNumber;
             Contact = supply.Person2.FullName;
             Website = supply.WebsiteURL;
+
+
+            List<OrderLine> TopPurchasers = db.OrderLines.Where(item => item.StockItemID == stockItem.StockItemID).OrderByDescending(x => x.Quantity).ToList();
+            HashSet<string> names = new HashSet<string>();
+            List<string> ListNames = new List<string>();
+            int[] TopOrders = new int[100];
+            NumberOfSales = TopPurchasers.Count();
+            int NumberSold = 0;
+
+
+
+            foreach (OrderLine item in TopPurchasers){
+                names.Add(item.Person.FullName);
+                NumberSold += item.Quantity;
+
+            }
+
+            GrossSales = NumberSold * stockItem.UnitPrice;
+
+            NetSales = GrossSales - (GrossSales * stockItem.TaxRate); 
+
+            foreach(string item in names)
+            {
+                ListNames.Add(item);
+            }
+
+            foreach(OrderLine item in TopPurchasers)
+            {
+                TopOrders[ListNames.IndexOf(item.Person.FullName)] += item.Quantity;
+            }
+           int five = TopOrders.Length;
+            List<int> ListOrders = new List<int>();
+            ListOrders = TopOrders.ToList();
 
 
 
@@ -64,6 +101,19 @@ namespace Hw6.Models.ViewModel
         public string Fax { get; private set; }
         public string Website { get; private set; }
         public string Contact { get; private set; }
+
+        public int NumberOfSales { get; private set; }
+
+        public decimal GrossSales { get; private set; }
+        
+        public decimal NetSales { get; private set; }
+
+        public List<string> ListNames { get; private set; }
+
+        public List<int> ListOrders { get; private set; }
+
+
+
 
 
     }
