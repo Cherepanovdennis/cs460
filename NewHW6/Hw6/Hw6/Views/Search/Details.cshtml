@@ -5,37 +5,110 @@
 }
 
 <head>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+    </style>
 
 </head>
 
 <h2>Details Page</h2>
 
-<div class="container-fluid">
-    <table class="table">
-        <tr>
-            <th>StockItemName</th>
-            <th>ItemSize</th>
-            <th>ReccomendedPrice</th>
-            <th>ProductWeight</th>
-            <th>LeadTimeDays</th>
-            <th>ValidSince</th>
-            <th>CountryOrigin</th>
-            <th>Tags</th>
-            <th>Photo</th>
-        </tr>
 
-        <tr>
-            <th>@Model.StockItemName</th>
-            <th>@Model.ItemSize</th>
-            <th>@Model.ReccomendedPrice</th>
-            <th>@Model.ProductWeight</th>
-            <th>@Model.LeadTimeDays</th>
-            <th>@Model.ValidSince</th>
-            <th>@Model.CountryOrigin</th>
-            <th>@Model.Tags</th>
-            <th>@Model.Photo</th>
-        </tr>
+@using (Html.BeginForm("Index", "Search", FormMethod.Get))
+{
 
-    </table>
+
+    <div class="container-fluid">
+        <table class="table">
+            <tr>
+                <th>StockItemName</th>
+                <th>ItemSize</th>
+                <th>ReccomendedPrice</th>
+                <th>ProductWeight</th>
+                <th>LeadTimeDays</th>
+                <th>ValidSince</th>
+                <th>CountryOrigin</th>
+                <th>Tags</th>
+                <th>Photo</th>
+            </tr>
+
+            <tr>
+                <th>@Model.StockItemName</th>
+                <th>@Model.ItemSize</th>
+                <th>@Model.ReccomendedPrice</th>
+                <th>@Model.ProductWeight</th>
+                <th>@Model.LeadTimeDays</th>
+                <th>@Model.ValidSince</th>
+                <th>@Model.CountryOrigin</th>
+                <th>@Model.Tags</th>
+                <th>@Model.Photo</th>
+            </tr>
+
+        </table>
+    </div>
+
+<div class="jumbotron-fluid">
+    <div class="container">
+        <h2>Supplier Profile</h2>
+        <ul style="list-style-type:none;">
+            <li>Company: @Model.Company</li>
+            <li>Phone: @Model.Phone </li>
+            <li>Fax: @Model.Fax </li>
+            <li>Website: @Model.Website</li>
+            <li>Contact: @Model.Contact </li>
+        </ul>
+    </div>
+
 </div>
+
+<div class="jumbotron-fluid">
+    <div class=" container">
+        <h2>Sales History Summary</h2>
+        <ul style="list-style-type:none;">
+            <li>Orders: @Model.NumberOfSales</li>
+            <li>Net Sales: $@Model.NetSales</li>
+            <li>Gross Sales $@Model.GrossSales</li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<div class="jumbotron-fluid">
+    <div class="container-fluid">
+        <table class="table">
+
+            <tr>
+                <th>Customer Name</th>
+                <th>Total Quantity</th>
+            </tr>
+
+            @for (int i = 0; i < 10; i++)
+
+
+            {
+                <tr><th>@Model.OrderedNameList.ElementAt(i) </th>
+                    <th>@Model.OrderedOrderList.ElementAt(i)</th> </tr>
+            
+
+            }
+
+
+        </table>
+    </div>
+</div>
+
+}
+
