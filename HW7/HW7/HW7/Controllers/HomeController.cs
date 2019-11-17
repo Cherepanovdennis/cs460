@@ -32,12 +32,22 @@ namespace HW7.Controllers
         }
 
 
-        public JsonResult GitToken(string token)
+        public JsonResult GitToken()
         {
-            string uri = "https://api.github.com/user/repos?access_token" + token;
-            string data = SendRequest(uri);
+            string token = System.IO.File.ReadAllText(@"C:\Users\Dennis\Desktop\Token.txt");
+            string uri = "https://api.github.com/user";
+            string data = SendRequest(uri, token, "Cherepanovdennis");
             JObject obj = JObject.Parse(data);
-            int count = obj.Count;
+
+            var json = new
+            {
+                X = 5,
+                y= 2,
+               seven = 2
+            };
+            return Json(json, JsonRequestBehavior.AllowGet);
+
+
 
 
         }
@@ -45,41 +55,12 @@ namespace HW7.Controllers
 
 
         // GET air quality data from: https://docs.openaq.org/
-        public JsonResult AirQuality(string city)
-        {
 
-            string cityClean = city.Replace(" ", "+");
-            Debug.WriteLine(cityClean);
-            string uri = "https://api.openaq.org/v1/measurements?location=" + cityClean;
-            // string uri = "https://api.github.com/user/repos?access_token=9343b13096b12d57c277d728fcae665c8e019906";
-            Debug.WriteLine(uri);
-            string data = SendRequest(uri);
-            JObject obj = JObject.Parse(data);
-            int count = (int)obj["meta"]["limit"];
-            List<int> airQualityList = new List<int>();
-            List<int> index = new List<int>();
-            List<string> dates = new List<string>();
-            for (int i = 0; i < count; ++i)
-            {
-                index.Add(i);
-                airQualityList.Add((int)obj["results"][i]["value"]);
-                dates.Add(((DateTime)obj["results"][i]["date"]["utc"]).ToString());
-            }
-
-            var jsonData = new
-            {
-                n = count,
-                x = index,
-                xdate = dates,
-                y = airQualityList
-            };
-
-            return Json(jsonData, JsonRequestBehavior.AllowGet);
-        }
-
-        private string SendRequest(string uri)
+        private string SendRequest(string uri, string credentials, string username)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            request.Headers.Add("Authorization", "token " + credentials);
+            request.UserAgent = username;       // Required, see: https://developer.github.com/v3/#user-agent-required
             request.Accept = "application/json";
 
             string jsonString = null;

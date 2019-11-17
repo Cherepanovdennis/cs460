@@ -1,7 +1,6 @@
 ﻿
 $('#request').click(function () {
-    var count = $('#id').val();
-    var source = '/Home/GitToken?token=' + count;
+    var source = '/Home/GitToken';
     $.ajax({
         type: 'GET',
         dataType: 'json',
@@ -9,6 +8,7 @@ $('#request').click(function () {
         success: displayNumbers,
         error: errorOnAjax
     });
+});
 
 
 function errorOnAjax() {
@@ -17,10 +17,8 @@ function errorOnAjax() {
 
 function displayNumbers(data) {
     console.log(data);
-    $('#picture').
-    $('#message').text(data.message);
-    $('#num').text(data["num"]);
-    $('#numbers').text(data.numbers);
+    $('#message').text(data.x);
+    $('#numbers').text(data.y);
 }
 
 function plotAirQuality(data) {
