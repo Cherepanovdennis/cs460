@@ -31,13 +31,27 @@ namespace HW7.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+
+        public JsonResult GitToken(string token)
+        {
+            string uri = "https://api.github.com/user/repos?access_token" + token;
+            string data = SendRequest(uri);
+            JObject obj = JObject.Parse(data);
+            int count = obj.Count;
+
+
+        }
+
+
+
         // GET air quality data from: https://docs.openaq.org/
         public JsonResult AirQuality(string city)
         {
 
             string cityClean = city.Replace(" ", "+");
             Debug.WriteLine(cityClean);
-            string uri = "https://api.github.com/user/repos?access_token=9343b13096b12d57c277d728fcae665c8e019906"
+            string uri = "https://api.openaq.org/v1/measurements?location=" + cityClean;
+            // string uri = "https://api.github.com/user/repos?access_token=9343b13096b12d57c277d728fcae665c8e019906";
             Debug.WriteLine(uri);
             string data = SendRequest(uri);
             JObject obj = JObject.Parse(data);

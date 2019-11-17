@@ -1,7 +1,7 @@
 ﻿
 $('#request').click(function () {
-    var count = $('#count').val();
-    var source = '/Home/Gimme?id=' + count;
+    var count = $('#id').val();
+    var source = '/Home/GitToken?token=' + count;
     $.ajax({
         type: 'GET',
         dataType: 'json',
@@ -9,22 +9,15 @@ $('#request').click(function () {
         success: displayNumbers,
         error: errorOnAjax
     });
-    var city = $('#city').val();
-    console.log(city);
-    $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: '/Home/AirQuality?city=' + city,
-        success: plotAirQuality,
-        error: errorOnAjax
-    });
-});
+
+
 function errorOnAjax() {
     console.log('Error on AJAX return');
 }
 
 function displayNumbers(data) {
     console.log(data);
+    $('#picture').
     $('#message').text(data.message);
     $('#num').text(data["num"]);
     $('#numbers').text(data.numbers);
