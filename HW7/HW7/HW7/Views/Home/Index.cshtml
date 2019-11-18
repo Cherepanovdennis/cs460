@@ -1,21 +1,19 @@
-﻿@{
+﻿@model HW7.Models.gitInfo
+
+@{
     ViewBag.Title = "Home Page";
 }
-
-<h1>Random Numbers</h1>
-
-<div class="row">
-    <div class="col-lg-6">
-        <form>
-            <input id="request" name="request" type="button" value="Request" />
-        </form>
-
-    </div>
-    <div class="col-lg-6">
-        <div id="picture" /> </div>
-        <div id="message"></div>
-        <div id="num"></div>
-        <div id="numbers"></div>
+    <div class="jumbotron">
+        <a href="@Model.user_homepage" >
+            <div class="container-fluid">
+                <div class="col-lg-6">
+                    <img src="@Model.photouri" height="200" width="300" />
+                </div>
+                <p>@Model.name</p>
+                <p>@Model.username</p>
+                <p>@Model.email</p>
+            </div>
+        </a>
     </div>
 
 

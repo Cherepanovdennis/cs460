@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using HW7.Models;
 
 namespace HW7.Controllers
 {
@@ -14,7 +15,13 @@ namespace HW7.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            string token = System.IO.File.ReadAllText(@"C:\Users\Dennis\Desktop\Token.txt");
+            string uri = "https://api.github.com/user";
+            string data = SendRequest(uri, token, "Cherepanovdennis");
+            JObject obj = JObject.Parse(data);
+            gitInfo userinfo = new gitInfo(obj);
+
+            return View(userinfo);
         }
 
         public JsonResult Gimme(int? id = 100)
@@ -34,10 +41,7 @@ namespace HW7.Controllers
 
         public JsonResult GitToken()
         {
-            string token = System.IO.File.ReadAllText(@"C:\Users\Dennis\Desktop\Token.txt");
-            string uri = "https://api.github.com/user";
-            string data = SendRequest(uri, token, "Cherepanovdennis");
-            JObject obj = JObject.Parse(data);
+
 
             var json = new
             {
