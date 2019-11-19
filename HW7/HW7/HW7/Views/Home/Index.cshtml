@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<style>
+    td {
+  border-style: groove; border-radius:10px; border-color:black; background-color:lightgray; padding:10px
+}
+</style>
+
 <div class="jumbotron">
     <a href="@Model.user_homepage">
         <div class="container-fluid">
@@ -34,6 +40,18 @@
 }
 
 
+<table id="newtable" class="col-lg-12" style="border-style:groove; border-radius:10px; border-color:black; background-color:lightgray; padding:10px">
+    <tr>
+        <th>SHA</th>
+        <th>TimeStamp</th>
+        <th>Commiter</th>
+        <th>Message</th>
+    </tr>
+
+
+
+
+</table>
 <div id="theplot"></div>
 
 @section scripts
