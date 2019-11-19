@@ -1,36 +1,22 @@
 ﻿
-$('#request').click(function () {
-    var source = '/Home/GitToken';
+function commitFun(id) {
+    var Repository = document.getElementById("RespositoryID " + id).innerText;
+    console.log(Repository);
+    var user = document.getElementById("UserNameID " + id).innerText;
+    console.log(user);
     $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: source,
-        success: displayNumbers,
+        type: "GET",
+        dataType: "json",
+        url: "/Home/CommitHistory?user=" + user + "&repo=" + Repository,
+        data: { 'userName': user, 'repoName': Repository },
+        success: displayCommits,
         error: errorOnAjax
     });
-});
+};
 
 
 function errorOnAjax() {
     console.log('Error on AJAX return');
 }
 
-function displayNumbers(data) {
-    console.log(data);
-    $('#message').text(data.x);
-    $('#numbers').text(data.y);
-}
 
-function plotAirQuality(data) {
-    var trace = {
-        //x: data.x,
-        x: data.xdate,
-        y: data.y,
-        mode: 'lines',
-        type: 'scatter'
-    };
-    console.log(data.xdate);
-    var plotData = [trace];
-    var layout = {};
-    Plotly.newPlot('theplot', plotData, layout);
-}

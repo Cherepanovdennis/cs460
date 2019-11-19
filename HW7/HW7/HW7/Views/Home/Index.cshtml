@@ -3,18 +3,35 @@
 @{
     ViewBag.Title = "Home Page";
 }
-    <div class="jumbotron">
-        <a href="@Model.user_homepage" >
-            <div class="container-fluid">
-                <div class="col-lg-6">
-                    <img src="@Model.photouri" height="200" width="300" />
-                </div>
-                <p>@Model.name</p>
-                <p>@Model.username</p>
-                <p>@Model.email</p>
+<div class="jumbotron">
+    <a href="@Model.user_homepage">
+        <div class="container-fluid">
+            <div class="col-lg-6">
+                <img src="@Model.photouri" height="200" width="200" />
             </div>
-        </a>
-    </div>
+            <p>@Model.name</p>
+            <p>@Model.username</p>
+            <p>@Model.email</p>
+        </div>
+    </a>
+</div>
+
+@for (int i = 0; i < Model.size - 1; i++)
+{
+    
+<div class="col-md-4" style="border-style:groove; border-radius:10px; border-color:black; background-color:lightgray; padding:10px ">
+
+    <a href="@Model.RepoURL.ElementAt(i)"><div id="RespositoryID @i">@Model.Reponame.ElementAt(i)</div></a>
+    <div id="UserNameID @i">@Model.login.ElementAt(i)</div>
+    <div>@Model.Repofullname.ElementAt(i)</div>
+    <div>Last updated:</div>
+    <div>@Model.updatedat.ElementAt(i)</div>
+    <img src="@Model.PhotoUrl.ElementAt(i)" height="50" width="50" />
+    <br />
+    <br />
+    <input type="image" src="https://bwptstudios.com/wp-content/uploads/2014/11/Self-Destruct-Button.jpg.jpeg" onclick="commitFun('@i')" id="@i" alt="Submit" width="50" height="50" style="border-radius:60%" />
+</div>
+}
 
 
 <div id="theplot"></div>

@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HW7.Models;
+using Newtonsoft.Json;
 
 namespace HW7.Controllers
 {
@@ -17,44 +18,51 @@ namespace HW7.Controllers
         {
             string token = System.IO.File.ReadAllText(@"C:\Users\Dennis\Desktop\Token.txt");
             string uri = "https://api.github.com/user";
+            string uriRepos = "https://api.github.com/user/repos";
             string data = SendRequest(uri, token, "Cherepanovdennis");
+            string repo = SendRequest(uriRepos, token, "Cherepanovdennis");
             JObject obj = JObject.Parse(data);
-            gitInfo userinfo = new gitInfo(obj);
+            JArray repos = JArray.Parse(repo);
+            gitInfo userinfo = new gitInfo(obj,repos);
 
             return View(userinfo);
         }
 
-        public JsonResult Gimme(int? id = 100)
+        public ActionResult CommitHistory()
         {
-            Random gen = new Random();
-            var data = new
+            string user, repo;
+            user = Request.QueryString["user"];
+            repo = Request.QueryString["repo"];
+            string token = System.IO.File.ReadAllText(@"C:\Users\Dennis\Desktop\Token.txt");
+            string uri = "https://api.github.com/repos/" + user + "/" + repo + "/commits";
+            string CommitHistory = SendRequest(uri, token, user);
+            JArray JsonCommit = JArray.Parse(CommitHistory);
+            int count = JsonCommit.Count;
+            List<CommitInfo> CommitInformation = new List<CommitInfo>();
+            for(int i = 0; i < count; i++)
             {
-                message = "Random Numbers API",
-                num = (int)id,
-                numbers1 = Enumerable.Range(1, (int)id),
-                numbers = Enumerable.Range(1, (int)id).Select(x => gen.Next(1000))
+                CommitInformation.Add(new CommitInfo() { 
+                    Hash = (string)JsonCommit[i]["sha"], 
+                    CommitUri = (string)JsonCommit[i]["html_url"], 
+                    CommitDateTime = (string)JsonCommit[i]["commit"]["committer"]["date"], 
+                    CommitMessage = (string)JsonCommit[i]["commit"]["message"],
+                    WhoCommited = (string)JsonCommit[i]["commit"]["committer"]["name"]});
+
+            }
+
+            return new ContentResult
+            {
+                ContentType = "application/json",
+                ContentEncoding = System.Text.Encoding.UTF8,
+                Content = JsonConvert.SerializeObject(CommitInformation)
+
+
             };
 
-            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
 
-        public JsonResult GitToken()
-        {
 
-
-            var json = new
-            {
-                X = 5,
-                y= 2,
-               seven = 2
-            };
-            return Json(json, JsonRequestBehavior.AllowGet);
-
-
-
-
-        }
 
 
 
