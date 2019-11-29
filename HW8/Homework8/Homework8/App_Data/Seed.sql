@@ -51,10 +51,10 @@ SELECT DISTINCT Event FROM dbo.AllData
 -- INSERT INTO [DBO].[Athletes] 
 
 INSERT INTO [DBO].[Athletes]
-(AthleteName,AthleteGender,CoachID,EventID,TeamID)
+(AthleteName,AthleteGender,CoachID,TeamID)
 select distinct ad.Athlete, ad.Gender, cs.CoachID, re.EventID, ts.TeamID
 from dbo.AllData as ad, dbo.coaches as cs, dbo.RaceEvents as re, dbo.Teams as ts
-where ( ad.Coach = cs.Name and ad.Event = re.EventName and ad.Team = ts.TeamName )
+where ( ad.Coach = cs.Name and ad.Team = ts.TeamName )
 
 select * from dbo.Athletes
 
