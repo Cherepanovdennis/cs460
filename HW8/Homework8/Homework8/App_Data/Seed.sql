@@ -48,6 +48,10 @@ INSERT INTO [DBO].[RaceEvents]
 (EventName) 
 SELECT DISTINCT Event FROM dbo.AllData 
 
+INSERT INTO [DBO].[MeetLocation]
+(NLocation,MeetDate)
+Select ad.Location, ad.MeetDate from dbo.AllData as ad
+
 -- INSERT INTO [DBO].[Athletes] 
 
 INSERT INTO [DBO].[Athletes]

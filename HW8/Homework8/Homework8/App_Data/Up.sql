@@ -15,11 +15,11 @@ TeamName nvarchar(255) NOT NULL,
 CoachID int NOT NULL REFERENCES Coaches(CoachID) 
 );
 CREATE TABLE MeetLocation(
-MeetLocation nvarchar(255) NOT NULL,
+NLocation nvarchar(255) NOT NULL,
 MeetDate DATE NOT NULL
 );
 ALTER TABLE MeetLocation
-	ADD CONSTRAINT pk_NewConstraint PRIMARY KEY (MeetLocation,MeetDate);
+	ADD CONSTRAINT pk_NewConstraint PRIMARY KEY (NLocation,MeetDate);
 
 
 CREATE TABLE Athletes(
@@ -31,3 +31,13 @@ CREATE TABLE Athletes(
 );
 
 CREATE TABLE RACERESULT (
+MeetLocation NVARCHAR(255) NOT NULL,
+MeetDate DATE NOT NULL,
+Team INT NOT NULL REFERENCES Teams(TeamID),
+Coach INT NOT NULL REFERENCES Coaches(CoachID),
+EventID INT NOT NULL REFERENCES RaceEvents(EventID),
+AthleteID INT NOT NULL REFERENCES Athletes(AthleteId),
+RaceTime REAL NOT NULL
+);
+ALTER TABLE RACERESULT ADD CONSTRAINT PK_RACE PRIMARY KEY (MeetLocation, MeetDate, Team, Coach, EventID, AthleteID)
+

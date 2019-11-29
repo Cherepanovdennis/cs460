@@ -6,3 +6,5 @@ DROP TABLE [dbo].[RaceEvents];
 EXEC sp_fkeys 'Athletes'
 DROP TABLE [dbo].[Athletes];
 DROP TABLE [DBO].[MeetLocation];
+EXEC sp_fkeys 'RACERESULTS'
+DROP TABLE [DBO].RACERESULT;
