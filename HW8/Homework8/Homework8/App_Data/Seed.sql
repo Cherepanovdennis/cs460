@@ -29,12 +29,13 @@ BULK INSERT [dbo].[AllData]
 		FIRSTROW = 2 ,
 		TABLOCK 
 	);
-	SELECT DISTINCT Event FROM dbo.AllData
+
 
 -- Load coaches data, no foreign keys here to worry about so we can 
 -- do a straight insert of just the distinct values
 INSERT INTO [dbo].[Coaches] ([Name])
 	SELECT DISTINCT Coach from [dbo].[AllData];
+
 
 -- Load Team data, a team has a coach so we need to find the correct entry in the 
 -- Coaches table so we can set the foreign key appropriately
@@ -43,6 +44,7 @@ INSERT INTO [dbo].[Teams]
 	SELECT DISTINCT ad.Team,cs.CoachID
 		FROM dbo.AllData as ad, dbo.Coaches as cs
 		WHERE ad.Coach = cs.[Name];
+select * from dbo.Teams
 
 INSERT INTO [DBO].[RaceEvents] 
 (EventName) 
@@ -50,15 +52,15 @@ SELECT DISTINCT Event FROM dbo.AllData
 
 INSERT INTO [DBO].[MeetLocation]
 (NLocation,MeetDate)
-Select ad.Location, ad.MeetDate from dbo.AllData as ad
+Select  distinct ad.Location, ad.MeetDate from dbo.AllData as ad
 
 -- INSERT INTO [DBO].[Athletes] 
 
 INSERT INTO [DBO].[Athletes]
-(AthleteName,AthleteGender,CoachID,TeamID)
-select distinct ad.Athlete, ad.Gender, cs.CoachID, re.EventID, ts.TeamID
-from dbo.AllData as ad, dbo.coaches as cs, dbo.RaceEvents as re, dbo.Teams as ts
-where ( ad.Coach = cs.Name and ad.Team = ts.TeamName )
+(AthleteName,AthleteGender,TeamID)
+select distinct ad.Athlete, ad.Gender, ts.TeamID
+from dbo.AllData as ad, dbo.Teams as ts
+where ( ad.Team = ts.TeamName )
 
 select * from dbo.Athletes
 
