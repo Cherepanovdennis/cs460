@@ -1,0 +1,34 @@
+﻿@model Homework8.Models.MeetLocation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MeetLocation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeetDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeetDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LocationID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

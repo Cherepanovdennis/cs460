@@ -66,6 +66,8 @@ SELECT DISTINCT AD.Event, ML.LocationID, AT.AthleteId, AD.RaceTime FROM DBO.AllD
 JOIN DBO.MeetLocation AS ML ON AD.Location = ml.NLocation 
 JOIN DBO.Athletes AS AT ON AD.Athlete = AT.AthleteName
 
+SELECT * FROM DBO.RACEEVENT
+
 
 
 -- Load all the other tables in a similar fashion.  Race results is the hardest since

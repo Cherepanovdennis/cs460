@@ -1,0 +1,50 @@
+﻿@model Homework8.Models.RACEEVENT
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RACEEVENT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Athlete.AthleteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Athlete.AthleteName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeetLocation.NLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeetLocation.NLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISTANCE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISTANCE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RACETIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RACETIME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

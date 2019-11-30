@@ -129,10 +129,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AthletesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MeetLocationsController.cs" />
+    <Compile Include="Controllers\RACEEVENTsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Athlete.cs" />
+    <Compile Include="Models\Coach.cs" />
+    <Compile Include="Models\MeetLocation.cs" />
+    <Compile Include="Models\RACEEVENT.cs" />
+    <Compile Include="Models\RaceEventContext.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,10 +183,23 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Athletes\Create.cshtml" />
+    <Content Include="Views\Athletes\Delete.cshtml" />
+    <Content Include="Views\Athletes\Details.cshtml" />
+    <Content Include="Views\Athletes\Edit.cshtml" />
+    <Content Include="Views\Athletes\Index.cshtml" />
+    <Content Include="Views\MeetLocations\Create.cshtml" />
+    <Content Include="Views\MeetLocations\Delete.cshtml" />
+    <Content Include="Views\MeetLocations\Details.cshtml" />
+    <Content Include="Views\MeetLocations\Edit.cshtml" />
+    <Content Include="Views\MeetLocations\Index.cshtml" />
+    <Content Include="Views\RACEEVENTs\Create.cshtml" />
+    <Content Include="Views\RACEEVENTs\Delete.cshtml" />
+    <Content Include="Views\RACEEVENTs\Details.cshtml" />
+    <Content Include="Views\RACEEVENTs\Edit.cshtml" />
+    <Content Include="Views\RACEEVENTs\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

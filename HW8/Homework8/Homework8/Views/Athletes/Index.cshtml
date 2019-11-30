@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Homework8.Models.Athlete>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Team.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AthleteName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AthleteGender)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Team.TeamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AthleteName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AthleteGender)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AthleteId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AthleteId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AthleteId })
+        </td>
+    </tr>
+}
+
+</table>
