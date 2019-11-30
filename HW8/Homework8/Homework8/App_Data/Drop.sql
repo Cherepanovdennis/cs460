@@ -2,9 +2,8 @@
 DROP TABLE [dbo].[Coaches];
 EXEC sp_fkeys 'Teams'
 DROP TABLE [dbo].[Teams];
-DROP TABLE [dbo].[RaceEvents];
 EXEC sp_fkeys 'Athletes'
 DROP TABLE [dbo].[Athletes];
 DROP TABLE [DBO].[MeetLocation];
-EXEC sp_fkeys 'RACERESULTS'
-DROP TABLE [DBO].RACERESULT;
+EXEC sp_fkeys 'RACEEVENT'
+DROP TABLE [DBO].[RACEEVENT];

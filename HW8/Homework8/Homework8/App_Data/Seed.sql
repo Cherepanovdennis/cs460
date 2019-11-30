@@ -46,9 +46,7 @@ INSERT INTO [dbo].[Teams]
 		WHERE ad.Coach = cs.[Name];
 select * from dbo.Teams
 
-INSERT INTO [DBO].[RaceEvents] 
-(EventName) 
-SELECT DISTINCT Event FROM dbo.AllData 
+
 
 INSERT INTO [DBO].[MeetLocation]
 (NLocation,MeetDate)
@@ -62,10 +60,13 @@ select distinct ad.Athlete, ad.Gender, ts.TeamID
 from dbo.AllData as ad, dbo.Teams as ts
 where ( ad.Team = ts.TeamName )
 
-select * from dbo.Athletes
+INSERT INTO [DBO].[RACEEVENT]
+(DISTANCE, LOCATIONID, ATHLETEID, RACETIME)
+SELECT DISTINCT AD.Event, ML.LocationID, AT.AthleteId, AD.RaceTime FROM DBO.AllData AS AD 
+JOIN DBO.MeetLocation AS ML ON AD.Location = ml.NLocation 
+JOIN DBO.Athletes AS AT ON AD.Athlete = AT.AthleteName
 
 
-SELECT * from DBO.Coaches
 
 -- Load all the other tables in a similar fashion.  Race results is the hardest since
 -- it has several FK's.  Think joins.
