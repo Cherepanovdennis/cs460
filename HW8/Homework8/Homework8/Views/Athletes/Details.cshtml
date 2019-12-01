@@ -1,42 +1,50 @@
-﻿@model Homework8.Models.Athlete
+﻿@model Homework8.Models.ViewModel
 
 @{
     ViewBag.Title = "Details";
 }
 
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+
 <h2>Details</h2>
 
-<div>
-    <h4>Athlete</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Team.TeamName)
-        </dt>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Event</th>
+        <th>Location</th>
+        <th>Time</th>
+    </tr>
+    @foreach (var item in Model.NewDetails){
+        <tr>
+            <td>@item.LocationDate</td>
+            <td>@item.Distance</td>
+            <td>@item.Location</td>
+            <td>@item.Time</td>
+        </tr>
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.Team.TeamName)
-        </dd>
+    <tr></tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AthleteName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AthleteName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AthleteGender)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AthleteGender)
-        </dd>
-
-    </dl>
-</div>
+</table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AthleteId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

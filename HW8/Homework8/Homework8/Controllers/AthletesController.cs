@@ -30,19 +30,32 @@ namespace Homework8.Controllers
             }
             Athlete athlete = db.Athletes.Find(id);
 
-            List<RACEEVENT> query = db.RACEEVENTs.Where(item => item.ATHLETEID == id).ToList();
+            List<string> Distance = db.RACEEVENTs.Where(item => item.ATHLETEID == id).Select(item => item.DISTANCE).ToList();
+            List<int> IntDistance = Distance.Select(int.Parse).ToList();
             List<MeetLocation> query1 = db.RACEEVENTs.Where(item => item.ATHLETEID == id).Select(item=> item.MeetLocation).ToList();
+            List<string> MeetName = query1.Select(item => item.NLocation).ToList();
+            List<DateTime> dates = query1.Select(item => item.MeetDate).ToList();
+            List<float> time = db.RACEEVENTs.Where(item => item.ATHLETEID == id).Select(item => item.RACETIME).ToList();
 
-            List<string> MeetName = new List<string>();
-            List<string> dates = new List<string>();
-            List<MeetLocation> parse = db.MeetLocations.Select(item => item).ToList();
+            List<AthleteDetails> Details = new List<AthleteDetails>();
 
+            for(int i = 0; i < query1.Count(); i++)
+            {
+                Details.Add(new AthleteDetails 
+                { Distance = IntDistance.ElementAt(i), Location = MeetName.ElementAt(i), 
+                    LocationDate = dates.ElementAt(i), Time = time.ElementAt(i) });
+
+            }
+
+            Details = Details.OrderByDescending(item => item.LocationDate).ThenByDescending(item => item.Distance).ToList();
+
+            ViewModel Vm = new ViewModel(Details);
 ;
             if (athlete == null)
             {
                 return HttpNotFound();
             }
-            return View(athlete);
+            return View(Vm);
         }
 
         // GET: Athletes/Create

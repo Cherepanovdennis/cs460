@@ -137,11 +137,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Athlete.cs" />
+    <Compile Include="Models\AthleteDetails.cs" />
     <Compile Include="Models\Coach.cs" />
     <Compile Include="Models\MeetLocation.cs" />
     <Compile Include="Models\RACEEVENT.cs" />
     <Compile Include="Models\RaceEventContext.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
