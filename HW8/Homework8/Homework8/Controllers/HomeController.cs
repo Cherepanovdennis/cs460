@@ -33,10 +33,6 @@ namespace Homework8.Controllers
             Graph athletenames = new Graph(athletes);
             return View(athletenames);
 
-            
-
-
-
         }
 
 

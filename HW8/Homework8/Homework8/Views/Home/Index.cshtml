@@ -42,19 +42,21 @@
                         <th>Distance</th>
                         <th></th>
                     </tr>
-                    @for(int i = 0; i < Model.Teamnames.Count(); i++) 
+                    @for (int i = 0; i < Model.Teamnames.Count(); i++)
                     {
                         <tr>
                             <td id="@i">@Model.Teamnames.ElementAt(i)</td>
-                            <td><select>
-                                <option value="100">100</option>
-                                <option value="200">200</option>
-                                <option value="400">400</option>
-                                <option value="800">800</option>
-                                <option value="1500">1500</option>
-                                <option value="3000">3000</option>
-                                </select></td>
-                            <td><button onclick="myfunction()">Graph</button></td>
+                            <td>
+                                <select id="value @i">
+                                    <option value="100">100</option>
+                                    <option value="200">200</option>
+                                    <option value="400">400</option>
+                                    <option value="800">800</option>
+                                    <option value="1500">1500</option>
+                                    <option value="3000">3000</option>
+                                </select>
+                            </td>
+                            <td><button onclick="myfunction('@i')">Graph</button></td>
 
                         </tr>
                     }
@@ -70,3 +72,9 @@
 
 
 </div>
+
+@section scripts
+{
+    <script src="~/Scripts/main.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+}
