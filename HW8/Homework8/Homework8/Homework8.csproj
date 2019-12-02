@@ -138,6 +138,7 @@
     </Compile>
     <Compile Include="Models\Athlete.cs" />
     <Compile Include="Models\AthleteDetails.cs" />
+    <Compile Include="Models\Graph.cs" />
     <Compile Include="Models\Coach.cs" />
     <Compile Include="Models\MeetLocation.cs" />
     <Compile Include="Models\RACEEVENT.cs" />

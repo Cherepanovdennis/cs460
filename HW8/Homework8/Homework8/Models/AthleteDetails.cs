@@ -15,11 +15,5 @@ namespace Homework8.Models
 
         public int Distance { get; set; }
 
-
-
-
-
-
-
     }
 }

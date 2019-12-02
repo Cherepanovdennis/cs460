@@ -1,4 +1,72 @@
-﻿@{
+﻿@model Homework8.Models.Graph
+
+@{
     ViewBag.Title = "Home Page";
 }
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<h1>Graph</h1>
+
+<br />
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @if (ViewBag.sucess == false)
+            {
+                @Html.Label("Team", "Team: ")
+                @Html.DropDownList("Teams", null, "Select")
+            }
+            else
+            {
+                <table>
+                    <tr>
+                        <th>Athlete</th>
+                        <th>Distance</th>
+                        <th></th>
+                    </tr>
+                    @for(int i = 0; i < Model.Teamnames.Count(); i++) 
+                    {
+                        <tr>
+                            <td id="@i">@Model.Teamnames.ElementAt(i)</td>
+                            <td><select>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="400">400</option>
+                                <option value="800">800</option>
+                                <option value="1500">1500</option>
+                                <option value="3000">3000</option>
+                                </select></td>
+                            <td><button onclick="myfunction()">Graph</button></td>
+
+                        </tr>
+                    }
+
+                </table>
+            }
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+}
+
+<div id="graph">
+
+
+</div>

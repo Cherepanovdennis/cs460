@@ -31,8 +31,10 @@ namespace Homework8.Controllers
             Athlete athlete = db.Athletes.Find(id);
 
             List<string> Distance = db.RACEEVENTs.Where(item => item.ATHLETEID == id).Select(item => item.DISTANCE).ToList();
+            
             List<int> IntDistance = Distance.Select(int.Parse).ToList();
             List<MeetLocation> query1 = db.RACEEVENTs.Where(item => item.ATHLETEID == id).Select(item=> item.MeetLocation).ToList();
+            
             List<string> MeetName = query1.Select(item => item.NLocation).ToList();
             List<DateTime> dates = query1.Select(item => item.MeetDate).ToList();
             List<float> time = db.RACEEVENTs.Where(item => item.ATHLETEID == id).Select(item => item.RACETIME).ToList();
