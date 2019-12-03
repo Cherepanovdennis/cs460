@@ -31,8 +31,10 @@
         <div class="col-md-10">
             @if (ViewBag.sucess == false)
             {
-                @Html.Label("Team", "Team: ")
+                @Html.Label("Team", "Team:  ")
                 @Html.DropDownList("Teams", null, "Select")
+                <br />
+                <button type="submit" class="btn btn-primary">Submit</button>
             }
             else
             {
@@ -44,6 +46,7 @@
                     </tr>
                     @for (int i = 0; i < Model.Teamnames.Count(); i++)
                     {
+
                         <tr>
                             <td id="@i">@Model.Teamnames.ElementAt(i)</td>
                             <td>
@@ -60,18 +63,18 @@
 
                         </tr>
                     }
-
                 </table>
             }
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        
     </div>
-}
+
 
 <div id="graph">
 
 
 </div>
+}
 
 @section scripts
 {

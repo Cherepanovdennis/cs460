@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Homework8.Models;
+using Newtonsoft.Json;
 
 
 namespace Homework8.Controllers
@@ -35,11 +37,42 @@ namespace Homework8.Controllers
 
         }
 
-
-        public ActionResult Athlete()
+        public ActionResult convert()
         {
-            return View();
+            if (Request.QueryString["athlete"] == null)
+            {
+                return View();
+            }
+
+            string athlete = Request.QueryString["athlete"].ToString();
+            string distance = Request.QueryString["distance"].ToString();
+
+            int athletekey = db.Athletes.Where(item => item.AthleteName == athlete).Select(item => item.AthleteId).First();
+
+            List<DateTime> dates = db.RACEEVENTs.Where(item => item.ATHLETEID == athletekey && item.DISTANCE == distance)
+                .Select(item => item.MeetLocation.MeetDate).ToList();
+
+            List<float> times = db.RACEEVENTs.Where(item => item.ATHLETEID == athletekey && item.DISTANCE == distance)
+                .Select(item => item.RACETIME).ToList();
+            List<JsonDate> values = new List<JsonDate>();
+
+
+            for (int i = 0; i < times.Count(); i++)
+            {
+                values.Add(new JsonDate { dates = dates.ElementAt(i), time = times.ElementAt(i) });
+            }
+
+
+            return new ContentResult
+            {
+                ContentType = "application/json",
+                ContentEncoding = System.Text.Encoding.UTF8,
+                Content = JsonConvert.SerializeObject(values)
+            };
         }
+
+
+
 
 
         public ActionResult About()
