@@ -50,7 +50,7 @@ select * from dbo.Teams
 
 INSERT INTO [DBO].[MeetLocation]
 (NLocation,MeetDate)
-Select  distinct ad.Location, ad.MeetDate from dbo.AllData as ad
+Select  distinct ad.Location, ad.Date from dbo.AllData as ad
 
 -- INSERT INTO [DBO].[Athletes] 
 
@@ -62,7 +62,7 @@ where ( ad.Team = ts.TeamName )
 
 INSERT INTO [DBO].[RACEEVENT]
 (DISTANCE, LOCATIONID, ATHLETEID, RACETIME)
-SELECT DISTINCT AD.Event, ML.LocationID, AT.AthleteId, AD.RaceTime FROM DBO.AllData AS AD 
+SELECT DISTINCT AD.Event, ML.LocationID, AT.AthleteId, AD.Time FROM DBO.AllData AS AD 
 JOIN DBO.MeetLocation AS ML ON AD.Location = ml.NLocation 
 JOIN DBO.Athletes AS AT ON AD.Athlete = AT.AthleteName
 

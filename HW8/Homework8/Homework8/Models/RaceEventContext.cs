@@ -8,7 +8,7 @@ namespace Homework8.Models
     public partial class RaceEventContext : DbContext
     {
         public RaceEventContext()
-            : base("name=RaceEventContext")
+            : base("name=RaceEventContext_Azure")
         {
         }
 
